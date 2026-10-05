@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CargoBridge MVP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">CB</span><div><strong>CargoBridge</strong><small>Logistics MVP</small></div></div>
+    <nav>
+      <button class="nav-btn active" data-page="dashboard">🏠 Dashboard</button>
+      <button class="nav-btn" data-page="loads">📦 Loads</button>
+      <button class="nav-btn" data-page="trucks">🚚 Trucks</button>
+      <button class="nav-btn" data-page="customers">👥 Customers</button>
+      <button class="nav-btn" data-page="trips">🛣️ Active Trips</button>
+      <button class="nav-btn" data-page="finance">💰 Finance</button>
+    </nav>
+    <div class="sidebar-note">MVP v1<br><span>Works offline in your browser.</span></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><button class="menu" id="menuBtn">☰</button><div><h1 id="pageTitle">Dashboard</h1><p id="today"></p></div></div>
+      <button class="primary" id="newLoadTop">+ New Load</button>
+    </header>
+
+    <section id="dashboard" class="page active">
+      <div class="hero"><div><h2>Move cargo. Connect trucks. Build trust.</h2><p>Your CargoBridge operations center.</p></div><button class="primary" id="heroNewLoad">+ Create Load</button></div>
+      <div class="cards">
+        <div class="card"><span>New Loads</span><strong id="statNew">0</strong></div>
+        <div class="card"><span>Available Trucks</span><strong id="statTrucks">0</strong></div>
+        <div class="card"><span>Active Trips</span><strong id="statTrips">0</strong></div>
+        <div class="card"><span>Delivered</span><strong id="statDelivered">0</strong></div>
+        <div class="card"><span>Commission</span><strong id="statCommission">ETB 0</strong></div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><div class="panel-head"><h3>Recent Loads</h3><button class="link-btn" data-page-link="loads">View all</button></div><div id="recentLoads"></div></div>
+        <div class="panel"><div class="panel-head"><h3>Available Trucks</h3><button class="link-btn" data-page-link="trucks">View all</button></div><div id="recentTrucks"></div></div>
+      </div>
+    </section>
+
+    <section id="loads" class="page">
+      <div class="section-head"><div><h2>Loads</h2><p>Manage customer cargo requests.</p></div><button class="primary" id="newLoadBtn">+ New Load</button></div>
+      <div class="toolbar"><input id="loadSearch" placeholder="Search customer, route or cargo..."><select id="loadStatusFilter"><option value="">All statuses</option><option>New</option><option>Searching</option><option>Matched</option><option>Confirmed</option><option>Picked Up</option><option>In Transit</option><option>Delivered</option><option>Cancelled</option></select></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Customer</th><th>Route</th><th>Cargo</th><th>Weight</th><th>Price</th><th>Status</th><th>Action</th></tr></thead><tbody id="loadsTable"></tbody></table></div>
+    </section>
+
+    <section id="trucks" class="page">
+      <div class="section-head"><div><h2>Trucks</h2><p>Manage your partner truck network.</p></div><button class="primary" id="newTruckBtn">+ Add Truck</button></div>
+      <div class="toolbar"><input id="truckSearch" placeholder="Search plate, driver or location..."><select id="truckStatusFilter"><option value="">All statuses</option><option>Available</option><option>Reserved</option><option>On Trip</option><option>Maintenance</option><option>Inactive</option></select></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Plate</th><th>Driver</th><th>Phone</th><th>Type</th><th>Capacity</th><th>Location</th><th>Status</th></tr></thead><tbody id="trucksTable"></tbody></table></div>
+    </section>
+
+    <section id="customers" class="page">
+      <div class="section-head"><div><h2>Customers</h2><p>Shippers and traders who need transport.</p></div><button class="primary" id="newCustomerBtn">+ Add Customer</button></div>
+      <div class="toolbar"><input id="customerSearch" placeholder="Search company, contact or phone..."></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Company</th><th>Contact</th><th>Phone</th><th>Location</th><th>Business</th><th>Loads</th></tr></thead><tbody id="customersTable"></tbody></table></div>
+    </section>
+
+    <section id="trips" class="page">
+      <div class="section-head"><div><h2>Active Trips</h2><p>Monitor confirmed and moving shipments.</p></div></div>
+      <div id="tripCards" class="trip-grid"></div>
+    </section>
+
+    <section id="finance" class="page">
+      <div class="section-head"><div><h2>Finance</h2><p>Track CargoBridge commission and trip economics.</p></div></div>
+      <div class="cards finance-cards"><div class="card"><span>Total Freight</span><strong id="financeFreight">ETB 0</strong></div><div class="card"><span>Commission</span><strong id="financeCommission">ETB 0</strong></div><div class="card"><span>Driver Payments</span><strong id="financeDriver">ETB 0</strong></div><div class="card"><span>Profit</span><strong id="financeProfit">ETB 0</strong></div></div>
+      <div class="panel"><h3>Completed Trips</h3><div class="table-wrap"><table><thead><tr><th>Trip</th><th>Customer</th><th>Route</th><th>Freight</th><th>Commission</th><th>Profit</th><th>Date</th></tr></thead><tbody id="financeTable"></tbody></table></div></div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal"><div class="modal-box"><button class="close" id="closeModal">×</button><h2 id="modalTitle"></h2><form id="modalForm"></form></div></div>
+  <script src="app.js"></script>
+</body>
+</html>
