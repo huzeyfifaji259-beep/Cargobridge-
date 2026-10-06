@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CargoBridge MVP</title>
+  <style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#f5f7f9;color:#17212b}button,input,select{font:inherit}.sidebar{position:fixed;inset:0 auto 0 0;width:250px;background:#0c2630;color:#fff;padding:22px 16px;display:flex;flex-direction:column}.brand{display:flex;gap:10px;align-items:center;margin:4px 8px 30px}.brand-mark{width:40px;height:40px;border-radius:12px;background:#22b573;display:grid;place-items:center;font-weight:800}.brand strong{display:block;font-size:18px}.brand small{color:#a9c0c7}.sidebar nav{display:grid;gap:7px}.nav-btn{border:0;background:transparent;color:#d8e5e8;text-align:left;padding:12px 13px;border-radius:10px;cursor:pointer}.nav-btn:hover,.nav-btn.active{background:#163c48;color:#fff}.sidebar-note{margin-top:auto;color:#9db4bb;font-size:12px;padding:10px}.sidebar-note span{color:#6f8d96}.main{margin-left:250px;min-height:100vh;padding:24px 28px}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.topbar>div{display:flex;gap:14px;align-items:center}.topbar h1{margin:0;font-size:28px}.topbar p{margin:3px 0 0;color:#71818a;font-size:13px}.menu{display:none;border:0;background:#fff;padding:9px;border-radius:9px}.primary{border:0;background:#18a86b;color:#fff;padding:11px 16px;border-radius:10px;font-weight:700;cursor:pointer}.primary:hover{filter:brightness(.95)}.page{display:none}.page.active{display:block}.hero{background:linear-gradient(120deg,#0c2630,#14556a);color:#fff;border-radius:18px;padding:25px;display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.hero h2{margin:0 0 6px}.hero p{margin:0;color:#c9e1e7}.cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:18px}.card,.panel{background:#fff;border:1px solid #e5eaed;border-radius:15px;padding:18px;box-shadow:0 3px 12px #17212b0b}.card span{color:#72838b;font-size:13px}.card strong{display:block;font-size:26px;margin-top:8px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel-head,.section-head{display:flex;justify-content:space-between;align-items:center}.panel h3,.section-head h2{margin:0}.section-head{margin-bottom:16px}.section-head p{margin:4px 0;color:#74848b}.link-btn{border:0;background:none;color:#138a5a;cursor:pointer;font-weight:700}.toolbar{display:flex;gap:10px;margin-bottom:14px}.toolbar input,.toolbar select{background:#fff;border:1px solid #d9e0e3;border-radius:10px;padding:11px 12px;outline:none}.toolbar input{flex:1}.table-wrap{overflow:auto;background:#fff;border:1px solid #e5eaed;border-radius:14px}.table-wrap table{width:100%;border-collapse:collapse;min-width:760px}.table-wrap th,.table-wrap td{padding:13px 14px;border-bottom:1px solid #edf0f2;text-align:left;font-size:13px}.table-wrap th{background:#fafcfc;color:#61737b;font-size:12px}.badge{display:inline-block;padding:5px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#e9f7f0;color:#137a51}.badge.warn{background:#fff5df;color:#9a6500}.badge.blue{background:#eaf2ff;color:#2862a7}.badge.red{background:#ffeaea;color:#a33}.action{border:0;background:#edf7f2;color:#147d55;border-radius:8px;padding:7px 9px;cursor:pointer}.trip-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.trip{background:#fff;border:1px solid #e5eaed;border-radius:15px;padding:18px}.trip h3{margin:0 0 8px}.route{font-weight:800;font-size:18px}.trip-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:15px 0;color:#61727a;font-size:13px}.modal{position:fixed;inset:0;background:#0b1c2299;display:none;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modal-box{position:relative;background:#fff;border-radius:18px;padding:24px;width:min(560px,100%);max-height:90vh;overflow:auto}.close{position:absolute;right:14px;top:10px;border:0;background:none;font-size:28px;color:#6c7b82;cursor:pointer}.modal-box h2{margin-top:0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:700;color:#52636b}.field input,.field select{padding:11px;border:1px solid #d9e0e3;border-radius:9px}.form-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.secondary{border:1px solid #d9e0e3;background:#fff;padding:10px 14px;border-radius:9px;cursor:pointer}.empty{padding:25px;text-align:center;color:#819097}.finance-cards{grid-template-columns:repeat(4,1fr)}@media(max-width:900px){.sidebar{transform:translateX(-100%);z-index:10;transition:.2s}.sidebar.open{transform:translateX(0)}.main{margin-left:0;padding:18px}.menu{display:block}.cards{grid-template-columns:repeat(2,1fr)}.grid2,.trip-grid{grid-template-columns:1fr}.finance-cards{grid-template-columns:repeat(2,1fr)}}@media(max-width:520px){.hero{display:block}.hero .primary{margin-top:15px}.cards{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.topbar h1{font-size:23px}}
+
+/* CargoBridge V2 additions */
+.primary-small{padding:8px 12px;font-size:13px}.muted{color:#7a8790;font-size:13px}.trip-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.trip-head h3{margin:0}.trip-actions{margin-top:16px;display:flex;gap:8px}.match-summary{background:#f3f7f8;border:1px solid #dbe5e8;border-radius:12px;padding:14px;line-height:1.7;margin-bottom:14px}.helper{color:#68757d;font-size:14px;line-height:1.5}
+
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">CB</span><div><strong>CargoBridge</strong><small>Logistics MVP</small></div></div>
+    <nav>
+      <button class="nav-btn active" data-page="dashboard">🏠 Dashboard</button>
+      <button class="nav-btn" data-page="loads">📦 Loads</button>
+      <button class="nav-btn" data-page="trucks">🚚 Trucks</button>
+      <button class="nav-btn" data-page="customers">👥 Customers</button>
+      <button class="nav-btn" data-page="trips">🛣️ Active Trips</button>
+      <button class="nav-btn" data-page="finance">💰 Finance</button>
+    </nav>
+    <div class="sidebar-note">MVP v2<br><span>Works offline in your browser.</span></div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><button class="menu" id="menuBtn">☰</button><div><h1 id="pageTitle">Dashboard</h1><p id="today"></p></div></div>
+      <button class="primary" id="newLoadTop">+ New Load</button>
+    </header>
+
+    <section id="dashboard" class="page active">
+      <div class="hero"><div><h2>Move cargo. Connect trucks. Build trust.</h2><p>Your CargoBridge operations center.</p></div><button class="primary" id="heroNewLoad">+ Create Load</button></div>
+      <div class="cards">
+        <div class="card"><span>New Loads</span><strong id="statNew">0</strong></div>
+        <div class="card"><span>Available Trucks</span><strong id="statTrucks">0</strong></div>
+        <div class="card"><span>Active Trips</span><strong id="statTrips">0</strong></div>
+        <div class="card"><span>Delivered</span><strong id="statDelivered">0</strong></div>
+        <div class="card"><span>Commission</span><strong id="statCommission">ETB 0</strong></div>
+      </div>
+      <div class="grid2">
+        <div class="panel"><div class="panel-head"><h3>Recent Loads</h3><button class="link-btn" data-page-link="loads">View all</button></div><div id="recentLoads"></div></div>
+        <div class="panel"><div class="panel-head"><h3>Available Trucks</h3><button class="link-btn" data-page-link="trucks">View all</button></div><div id="recentTrucks"></div></div>
+      </div>
+    </section>
+
+    <section id="loads" class="page">
+      <div class="section-head"><div><h2>Loads</h2><p>Manage customer cargo requests.</p></div><button class="primary" id="newLoadBtn">+ New Load</button></div>
+      <div class="toolbar"><input id="loadSearch" placeholder="Search customer, route or cargo..."><select id="loadStatusFilter"><option value="">All statuses</option><option>New</option><option>Searching</option><option>Matched</option><option>Confirmed</option><option>Picked Up</option><option>In Transit</option><option>Delivered</option><option>Cancelled</option></select></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Customer</th><th>Route</th><th>Cargo</th><th>Weight</th><th>Price</th><th>Status</th><th>Action</th></tr></thead><tbody id="loadsTable"></tbody></table></div>
+    </section>
+
+    <section id="trucks" class="page">
+      <div class="section-head"><div><h2>Trucks</h2><p>Manage your partner truck network.</p></div><button class="primary" id="newTruckBtn">+ Add Truck</button></div>
+      <div class="toolbar"><input id="truckSearch" placeholder="Search plate, driver or location..."><select id="truckStatusFilter"><option value="">All statuses</option><option>Available</option><option>Reserved</option><option>On Trip</option><option>Maintenance</option><option>Inactive</option></select></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Plate</th><th>Driver</th><th>Phone</th><th>Type</th><th>Capacity</th><th>Location</th><th>Status</th></tr></thead><tbody id="trucksTable"></tbody></table></div>
+    </section>
+
+    <section id="customers" class="page">
+      <div class="section-head"><div><h2>Customers</h2><p>Shippers and traders who need transport.</p></div><button class="primary" id="newCustomerBtn">+ Add Customer</button></div>
+      <div class="toolbar"><input id="customerSearch" placeholder="Search company, contact or phone..."></div>
+      <div class="table-wrap"><table><thead><tr><th>ID</th><th>Company</th><th>Contact</th><th>Phone</th><th>Location</th><th>Business</th><th>Loads</th></tr></thead><tbody id="customersTable"></tbody></table></div>
+    </section>
+
+    <section id="trips" class="page">
+      <div class="section-head"><div><h2>Active Trips</h2><p>Monitor matched, confirmed, and moving shipments.</p></div></div>
+      <div id="tripCards" class="trip-grid"></div>
+    </section>
+
+    <section id="finance" class="page">
+      <div class="section-head"><div><h2>Finance</h2><p>Track CargoBridge commission and trip economics.</p></div></div>
+      <div class="cards finance-cards"><div class="card"><span>Total Freight</span><strong id="financeFreight">ETB 0</strong></div><div class="card"><span>Commission</span><strong id="financeCommission">ETB 0</strong></div><div class="card"><span>Driver Payments</span><strong id="financeDriver">ETB 0</strong></div><div class="card"><span>Profit</span><strong id="financeProfit">ETB 0</strong></div></div>
+      <div class="panel"><h3>Completed Trips</h3><div class="table-wrap"><table><thead><tr><th>Trip</th><th>Customer</th><th>Route</th><th>Freight</th><th>Commission</th><th>Profit</th><th>Date</th></tr></thead><tbody id="financeTable"></tbody></table></div></div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal"><div class="modal-box"><button class="close" id="closeModal">×</button><h2 id="modalTitle"></h2><form id="modalForm"></form></div></div>
+  <script>
+const KEY="cargobridge_mvp_v2";
+const OLD_KEY="cargobridge_mvp_v1";
+const seed={
+ trucks:[{id:"TR-001",owner:"Example Owner",driver:"Example Driver",phone:"09XXXXXXXX",plate:"AA-00000",type:"Isuzu FSR",capacity:10,location:"Jimma",destination:"Addis Ababa",status:"Available",notes:"Demo row"}],
+ customers:[{id:"CUS-001",company:"Example Trading",contact:"Example Contact",phone:"09XXXXXXXX",location:"Jimma",business:"Trader",loads:0,notes:"Demo row"}],
+ loads:[{id:"LD-001",customerId:"CUS-001",customer:"Example Trading",pickup:"Jimma",destination:"Addis Ababa",cargo:"General Cargo",weight:8,truckType:"Isuzu FSR",date:"2026-10-07",freight:0,price:0,status:"New",truck:"",created:"2026-10-06",notes:"Demo row"}],
+ trips:[],history:[]
+};
+function loadDB(){
+  const fresh=localStorage.getItem(KEY); if(fresh) return JSON.parse(fresh);
+  const old=localStorage.getItem(OLD_KEY); if(old){
+    const migrated=JSON.parse(old);
+    migrated.trips=migrated.trips||[]; migrated.history=migrated.history||[];
+    return migrated;
+  }
+  return structuredClone(seed);
+}
+let db=loadDB();
+function save(){localStorage.setItem(KEY,JSON.stringify(db));renderAll()}
+function money(n){return "ETB "+Number(n||0).toLocaleString()}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+function badge(s){let c=s==="Cancelled"?"red":["New","Searching"].includes(s)?"warn":["Matched","Confirmed","Picked Up","In Transit","Delivered"].includes(s)?"blue":"";return `<span class="badge ${c}">${esc(s)}</span>`}
+function go(page){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(page).classList.add("active");document.querySelectorAll(".nav-btn").forEach(x=>x.classList.toggle("active",x.dataset.page===page));document.getElementById("pageTitle").textContent=page==="trips"?"Active Trips":page[0].toUpperCase()+page.slice(1);if(innerWidth<901)document.querySelector(".sidebar").classList.remove("open")}
+document.querySelectorAll(".nav-btn").forEach(b=>b.onclick=()=>go(b.dataset.page));
+document.querySelectorAll("[data-page-link]").forEach(b=>b.onclick=()=>go(b.dataset.pageLink));
+document.getElementById("menuBtn").onclick=()=>document.querySelector(".sidebar").classList.toggle("open");
+document.getElementById("today").textContent=new Date().toLocaleDateString(undefined,{weekday:"long",year:"numeric",month:"long",day:"numeric"});
+
+function renderAll(){
+ document.getElementById("statNew").textContent=db.loads.filter(x=>["New","Searching"].includes(x.status)).length;
+ document.getElementById("statTrucks").textContent=db.trucks.filter(x=>x.status==="Available").length;
+ document.getElementById("statTrips").textContent=db.trips.filter(x=>x.status!=="Delivered").length;
+ document.getElementById("statDelivered").textContent=db.loads.filter(x=>x.status==="Delivered").length;
+ document.getElementById("statCommission").textContent=money(db.history.reduce((a,x)=>a+Number(x.commission||0),0));
+ document.getElementById("recentLoads").innerHTML=db.loads.slice(-5).reverse().map(x=>`<div class="listrow"><b>${esc(x.id)}</b> ${esc(x.customer)}<br><small>${esc(x.pickup)} → ${esc(x.destination)} · ${badge(x.status)}</small></div>`).join("")||'<div class="empty">No loads yet.</div>';
+ document.getElementById("recentTrucks").innerHTML=db.trucks.filter(x=>x.status==="Available").slice(0,5).map(x=>`<div class="listrow"><b>${esc(x.plate)}</b> ${esc(x.driver)}<br><small>${esc(x.type)} · ${x.capacity} ton · ${esc(x.location)}</small></div>`).join("")||'<div class="empty">No available trucks.</div>';
+ renderLoads();renderTrucks();renderCustomers();renderTrips();renderFinance();
+}
+function loadAction(x){
+ if(x.status==="New"||x.status==="Searching") return `<button class="action primary-small" onclick="matchTruck('${x.id}')">Match Truck</button>`;
+ if(x.status==="Matched") return `<button class="action primary-small" onclick="confirmTrip('${x.id}')">Confirm Trip</button>`;
+ if(x.status==="Confirmed") return `<button class="action primary-small" onclick="startTrip('${x.id}')">Start Trip</button>`;
+ if(x.status==="Picked Up") return `<button class="action primary-small" onclick="startTrip('${x.id}')">Start Trip</button>`;
+ if(x.status==="In Transit") return `<button class="action primary-small" onclick="finishTripForLoadId('${x.id}')">Mark Delivered</button>`;
+ return `<span class="muted">Completed</span>`;
+}
+function renderLoads(){
+ let q=(document.getElementById("loadSearch")?.value||"").toLowerCase(), f=document.getElementById("loadStatusFilter")?.value||"";
+ let rows=db.loads.filter(x=>(!f||x.status===f)&&JSON.stringify(x).toLowerCase().includes(q));
+ document.getElementById("loadsTable").innerHTML=rows.map(x=>`<tr><td>${esc(x.id)}</td><td>${esc(x.customer)}</td><td>${esc(x.pickup)} → ${esc(x.destination)}</td><td>${esc(x.cargo)}</td><td>${x.weight} t</td><td>${money(x.price||x.freight)}</td><td>${badge(x.status)}</td><td>${loadAction(x)}</td></tr>`).join("")||'<tr><td colspan="8" class="empty">No loads found.</td></tr>';
+}
+function renderTrucks(){
+ let q=(document.getElementById("truckSearch")?.value||"").toLowerCase(), f=document.getElementById("truckStatusFilter")?.value||"";
+ let rows=db.trucks.filter(x=>(!f||x.status===f)&&JSON.stringify(x).toLowerCase().includes(q));
+ document.getElementById("trucksTable").innerHTML=rows.map(x=>`<tr><td>${esc(x.id)}</td><td>${esc(x.plate)}</td><td>${esc(x.driver)}</td><td>${esc(x.phone)}</td><td>${esc(x.type)}</td><td>${x.capacity} t</td><td>${esc(x.location)}</td><td>${badge(x.status)}</td></tr>`).join("")||'<tr><td colspan="8" class="empty">No trucks found.</td></tr>';
+}
+function renderCustomers(){
+ let q=(document.getElementById("customerSearch")?.value||"").toLowerCase();
+ let rows=db.customers.filter(x=>JSON.stringify(x).toLowerCase().includes(q));
+ document.getElementById("customersTable").innerHTML=rows.map(x=>`<tr><td>${esc(x.id)}</td><td>${esc(x.company)}</td><td>${esc(x.contact)}</td><td>${esc(x.phone)}</td><td>${esc(x.location)}</td><td>${esc(x.business)}</td><td>${x.loads||0}</td></tr>`).join("")||'<tr><td colspan="7" class="empty">No customers found.</td></tr>';
+}
+function renderTrips(){
+ let trips=db.trips.filter(t=>t.status!=="Delivered");
+ document.getElementById("tripCards").innerHTML=trips.map(t=>`<div class="trip"><div class="trip-head"><h3>${esc(t.id)}</h3>${badge(t.status)}</div><div class="route">${esc(t.pickup)} → ${esc(t.destination)}</div><div class="trip-meta"><div>Customer<br><b>${esc(t.customer)}</b></div><div>Driver<br><b>${esc(t.driver)}</b></div><div>Truck<br><b>${esc(t.truck)}</b></div><div>Cargo<br><b>${esc(t.cargo)} · ${t.weight}t</b></div></div><div class="trip-actions">${t.status==="Confirmed"?`<button class="action primary-small" onclick="startTrip('${t.loadId}')">Start Trip</button>`:""}${t.status==="In Transit"?`<button class="action primary-small" onclick="finishTrip('${t.id}')">Mark Delivered</button>`:""}</div></div>`).join("")||'<div class="panel empty">No active trips. Match a new load with an available truck to create one.</div>';
+}
+function renderFinance(){
+ let h=db.history, freight=h.reduce((a,x)=>a+Number(x.freight||0),0), commission=h.reduce((a,x)=>a+Number(x.commission||0),0), driver=h.reduce((a,x)=>a+Number(x.driver||0),0), profit=h.reduce((a,x)=>a+Number(x.profit||0),0);
+ document.getElementById("financeFreight").textContent=money(freight);document.getElementById("financeCommission").textContent=money(commission);document.getElementById("financeDriver").textContent=money(driver);document.getElementById("financeProfit").textContent=money(profit);
+ document.getElementById("financeTable").innerHTML=h.map(x=>`<tr><td>${esc(x.trip)}</td><td>${esc(x.customer)}</td><td>${esc(x.route)}</td><td>${money(x.freight)}</td><td>${money(x.commission)}</td><td>${money(x.profit)}</td><td>${esc(x.date)}</td></tr>`).join("")||'<tr><td colspan="7" class="empty">No completed trips yet.</td></tr>';
+}
+function openModal(title,html){document.getElementById("modalTitle").textContent=title;document.getElementById("modalForm").innerHTML=html;document.getElementById("modal").classList.add("show")}
+function closeModal(){document.getElementById("modal").classList.remove("show")}
+document.getElementById("closeModal").onclick=closeModal;document.getElementById("modal").onclick=e=>{if(e.target.id==="modal")closeModal()};
+function formField(label,name,placeholder="",type="text",full=false){return `<div class="field ${full?"full":""}"><label>${label}</label><input name="${name}" type="${type}" placeholder="${placeholder}" required></div>`}
+function newLoad(){
+ openModal("Create New Load",`<div class="form-grid">${formField("Customer","customer","Customer/company")}${formField("Customer Phone","phone","09...")}${formField("Pickup","pickup","Jimma")}${formField("Destination","destination","Addis Ababa")}${formField("Cargo","cargo","Coffee, cement, general cargo")}${formField("Weight (ton)","weight","8","number")}${formField("Truck Type Needed","truckType","Isuzu FSR")}${formField("Pickup Date","date","","date")}${formField("Freight Price (ETB)","price","0","number")}${formField("Notes","notes","Optional","text",true)}</div><div class="form-actions"><button type="button" class="secondary" onclick="closeModal()">Cancel</button><button class="primary">Create Load</button></div>`);
+ document.getElementById("modalForm").onsubmit=e=>{e.preventDefault();let f=new FormData(e.target), customer=f.get("customer"), cid="CUS-"+String(db.customers.length+1).padStart(3,"0");if(!db.customers.some(c=>c.company===customer)){db.customers.push({id:cid,company:customer,contact:"",phone:f.get("phone"),location:f.get("pickup"),business:"Customer",loads:0,notes:""})}let c=db.customers.find(c=>c.company===customer);c.loads=(c.loads||0)+1;db.loads.push({id:"LD-"+String(db.loads.length+1).padStart(3,"0"),customerId:c.id,customer,pickup:f.get("pickup"),destination:f.get("destination"),cargo:f.get("cargo"),weight:Number(f.get("weight")),truckType:f.get("truckType"),date:f.get("date"),freight:Number(f.get("price")),price:Number(f.get("price")),status:"New",truck:"",created:new Date().toISOString().slice(0,10),notes:f.get("notes")});save();closeModal();go("loads")};
+}
+function newTruck(){
+ openModal("Add Truck",`<div class="form-grid">${formField("Owner","owner","Owner name")}${formField("Driver","driver","Driver name")}${formField("Driver Phone","phone","09...")}${formField("Plate Number","plate","AA-12345")}${formField("Truck Type","type","Isuzu FSR")}${formField("Capacity (Ton)","capacity","10","number")}${formField("Current Location","location","Jimma")}${formField("Destination","destination","Addis Ababa")}</div><div class="form-actions"><button type="button" class="secondary" onclick="closeModal()">Cancel</button><button class="primary">Save Truck</button></div>`);
+ document.getElementById("modalForm").onsubmit=e=>{e.preventDefault();let f=new FormData(e.target);db.trucks.push({id:"TR-"+String(db.trucks.length+1).padStart(3,"0"),owner:f.get("owner"),driver:f.get("driver"),phone:f.get("phone"),plate:f.get("plate"),type:f.get("type"),capacity:Number(f.get("capacity")),location:f.get("location"),destination:f.get("destination"),status:"Available",notes:""});save();closeModal();go("trucks")};
+}
+function newCustomer(){
+ openModal("Add Customer",`<div class="form-grid">${formField("Company","company","Company/trader")}${formField("Contact Person","contact","Name")}${formField("Phone","phone","09...")}${formField("Location","location","Jimma")}${formField("Business Type","business","Trader/importer/producer")}${formField("Notes","notes","Optional","text",true)}</div><div class="form-actions"><button type="button" class="secondary" onclick="closeModal()">Cancel</button><button class="primary">Save Customer</button></div>`);
+ document.getElementById("modalForm").onsubmit=e=>{e.preventDefault();let f=new FormData(e.target);db.customers.push({id:"CUS-"+String(db.customers.length+1).padStart(3,"0"),company:f.get("company"),contact:f.get("contact"),phone:f.get("phone"),location:f.get("location"),business:f.get("business"),loads:0,notes:f.get("notes")});save();closeModal();go("customers")};
+}
+function matchTruck(loadId){
+ const l=db.loads.find(x=>x.id===loadId); if(!l)return;
+ const trucks=db.trucks.filter(t=>t.status==="Available" && Number(t.capacity)>=Number(l.weight));
+ if(!trucks.length){alert("No available truck has enough capacity for this load yet.");return}
+ openModal(`Match Truck — ${l.id}`,`<div class="match-summary"><b>${esc(l.customer)}</b><br>${esc(l.pickup)} → ${esc(l.destination)}<br>${esc(l.cargo)} · ${l.weight} ton · ${money(l.price||l.freight)}</div><div class="field full"><label>Select available truck</label><select id="matchTruckSelect" required>${trucks.map(t=>`<option value="${esc(t.id)}">${esc(t.plate)} — ${esc(t.driver)} — ${esc(t.type)} — ${t.capacity}t — ${esc(t.location)}</option>`).join("")}</select></div><div class="form-actions"><button type="button" class="secondary" onclick="closeModal()">Cancel</button><button class="primary">Assign Truck</button></div>`);
+ document.getElementById("modalForm").onsubmit=e=>{e.preventDefault();const tid=document.getElementById("matchTruckSelect").value;const t=db.trucks.find(x=>x.id===tid);if(!t)return;l.status="Matched";l.truck=t.id;l.matchedAt=new Date().toISOString();t.status="Reserved";save();closeModal();go("loads")};
+}
+function confirmTrip(loadId){
+ const l=db.loads.find(x=>x.id===loadId), t=l&&db.trucks.find(x=>x.id===l.truck);if(!l||!t)return;
+ openModal(`Confirm Trip — ${l.id}`,`<div class="match-summary"><b>Load:</b> ${esc(l.id)} · ${esc(l.cargo)} · ${l.weight}t<br><b>Route:</b> ${esc(l.pickup)} → ${esc(l.destination)}<br><b>Truck:</b> ${esc(t.plate)} · ${esc(t.driver)}<br><b>Customer:</b> ${esc(l.customer)}</div><p class="helper">Confirming creates an Active Trip and keeps the truck reserved until the trip starts.</p><div class="form-actions"><button type="button" class="secondary" onclick="closeModal()">Back</button><button class="primary">Confirm & Create Trip</button></div>`);
+ document.getElementById("modalForm").onsubmit=e=>{e.preventDefault();createTrip(l,t);save();closeModal();go("trips")};
+}
+function createTrip(l,t){
+ if(db.trips.some(x=>x.loadId===l.id))return;
+ l.status="Confirmed";
+ db.trips.push({id:"TRIP-"+String(db.trips.length+1).padStart(3,"0"),loadId:l.id,truck:t.plate,truckId:t.id,driver:t.driver,customer:l.customer,pickup:l.pickup,destination:l.destination,cargo:l.cargo,weight:l.weight,start:"",expected:l.date,status:"Confirmed",last:new Date().toISOString().slice(0,10)});
+}
+function startTrip(loadId){const l=db.loads.find(x=>x.id===loadId),t=l&&db.trucks.find(x=>x.id===l.truck),trip=l&&db.trips.find(x=>x.loadId===l.id);if(!l||!t||!trip)return;l.status="In Transit";trip.status="In Transit";trip.start=new Date().toISOString().slice(0,10);t.status="On Trip";save();go("trips")}
+function finishTrip(id){const trip=db.trips.find(x=>x.id===id);if(trip)finishTripForLoadId(trip.loadId)}
+function finishTripForLoadId(loadId){
+ const l=db.loads.find(x=>x.id===loadId), trip=db.trips.find(x=>x.loadId===loadId);if(!l)return;
+ l.status="Delivered";
+ if(trip){trip.status="Delivered";const truck=db.trucks.find(x=>x.id===trip.truckId||x.plate===trip.truck);if(truck)truck.status="Available";const freight=Number(l.price||l.freight||0), commission=Math.round(freight*0.10), driver=Math.max(0,freight-commission);db.history.push({trip:trip.id,customer:l.customer,route:`${l.pickup} → ${l.destination}`,freight,commission,driver,profit:commission,date:new Date().toISOString().slice(0,10)});db.trips=db.trips.filter(x=>x.id!==trip.id)}
+ save();go("loads")
+}
+
+document.getElementById("newLoadBtn").onclick=newLoad;document.getElementById("newLoadTop").onclick=newLoad;document.getElementById("heroNewLoad").onclick=newLoad;document.getElementById("newTruckBtn").onclick=newTruck;document.getElementById("newCustomerBtn").onclick=newCustomer;
+["loadSearch","loadStatusFilter"].forEach(id=>document.getElementById(id).addEventListener("input",renderLoads));
+["truckSearch","truckStatusFilter"].forEach(id=>document.getElementById(id).addEventListener("input",renderTrucks));
+document.getElementById("customerSearch").addEventListener("input",renderCustomers);
+renderAll();
+
+  </script>
+</body>
+</html>
